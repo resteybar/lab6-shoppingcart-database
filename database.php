@@ -5,6 +5,11 @@
         $password = "0c8f7781";
         $dbname = "heroku_e27ec8f2cd343a9";
         
+        // $host = "localhost";
+        // $username = "resteybar";
+        // $password = "Kingdomhearts2?";
+        // $dbname = "shoppingCart";
+        
         // Create connection
         $dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
         $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
