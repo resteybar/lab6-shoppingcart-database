@@ -1,9 +1,9 @@
 <?php
     function getDatabaseConnection() {
-        $host = "localhost";
-        $username = "resteybar";
-        $password = "Kingdomhearts2?";
-        $dbname = "shoppingCart";
+        $host = "us-cdbr-iron-east-05.cleardb.net";
+        $username = "b855ced9725ea2";
+        $password = "0c8f7781";
+        $dbname = "heroku_e27ec8f2cd343a9";
         
         // Create connection
         $dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
