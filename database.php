@@ -1,5 +1,7 @@
 <?php
     function getDatabaseConnection() {
+        // mysql://b855ced9725ea2:0c8f7781@us-cdbr-iron-east-05.cleardb.net/heroku_e27ec8f2cd343a9?reconnect=true
+
         $host = "us-cdbr-iron-east-05.cleardb.net";
         $username = "b855ced9725ea2";
         $password = "0c8f7781";
@@ -9,6 +11,15 @@
         // $username = "resteybar";
         // $password = "Kingdomhearts2?";
         // $dbname = "shoppingCart";
+        
+        //checking whether the URL contains "herokuapp" (using Heroku)
+        if(strpos($_SERVER['HTTP_HOST'], 'herokuapp') !== false) {
+           $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+           $host = $url["host"];
+           $dbname   = substr($url["path"], 1);
+           $username = $url["user"];
+           $password = $url["password"];
+        }
         
         // Create connection
         $dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
