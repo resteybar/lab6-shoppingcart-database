@@ -6,6 +6,7 @@
         $username = "b855ced9725ea2";
         $password = "0c8f7781";
         $dbname = "heroku_e27ec8f2cd343a9";
+        $charset = 'utf8mb4';
         
         // $host = "localhost";
         // $username = "resteybar";
@@ -22,10 +23,19 @@
         }
         
         // Create connection
-        $dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-        $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // $dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+        // $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
-        return $dbConn;
+        // return $dbConn;
+        
+        $dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
+        $opt = [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_EMULATE_PREPARES => false,
+        ];
+        $pdo = new PDO($dsn, $username, $password, $opt);
+        return $pdo; 
     }
 
     function insertItemsIntoDB($items) { 
